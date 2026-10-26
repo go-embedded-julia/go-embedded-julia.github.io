@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{ .Site.Title }} — Julia, embedded in Go. In development.</title>
+<meta name="description" content="{{ .Site.Params.description }}">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+{{ partial "styles.html" . }}
+</head>
+<body class="lm">
+  <header class="nav"><div class="wrap">
+    <a class="brand" href="/"><img class="glyph" src="/img/logo.svg" width="32" height="32" alt="go-embedded-julia logo"> {{ .Site.Title }}</a>
+    <nav><a href="#scope">Scope</a><a href="#milestones">Milestones</a><a href="#boundary">Boundary</a><a href="#repos">Repositories</a></nav>
+    {{ partial "theme-toggle.html" . }}
+  </div></header>
+  {{ partial "fork-ribbon.html" "https://github.com/go-embedded-julia" }}
+
+  <div class="hero"><div class="wrap">
+    <div>
+      <h1 class="head">Julia, embedded in Go.<br><span class="accent">An interpreter that runs Julia's own Base.</span></h1>
+      <p class="sub">go-embedded-julia is <b>in development</b>: milestone <b>M0</b> (the oracle harness) and milestone <b>M1</b> (the parser). It will be a pure-Go, embeddable Julia interpreter: <b>JuliaSyntax</b> and <b>JuliaLowering</b> ported to Go, and an interpreter over the lowered IR that runs <b>Julia's Base unchanged</b>, for the <code>julia</code> cells of <a href="https://go-notebook.github.io/">go-notebook</a> and its WebAssembly playground. Nothing is released.</p>
+      <div class="cta">
+        <a class="btn btn-primary" href="https://go-embedded-julia.github.io/docs/">{{ partial "icons/book.html" . }}Read the plan →</a>
+        <a class="btn btn-ghost" href="https://github.com/go-scikit/roadmap/pull/12">{{ partial "icons/github.html" . }}The bibliography →</a>
+      </div>
+      <div class="trust"><span><b>in development</b>: M0, M1</span><span><b>{{ len .Site.Params.milestones }}</b> milestones, M0 to M7</span><span><b>pure Go</b></span></div>
+    </div>
+    <div class="term">
+      <div class="bar"><i style="background:#ff5f57"></i><i style="background:#febc2e"></i><i style="background:#28c840"></i><span class="t">status</span></div>
+<pre style="white-space:pre;overflow-x:auto;tab-size:4">status    in development
+now       M0 oracle harness, M1 parser
+next      M2 lowering, M3 Core runtime
+goal      julia cells in go-notebook
+scope     an interpreter, not a JIT
+plan      github.com/go-scikit/roadmap</pre>
+    </div>
+  </div></div>
+
+  <div class="strip"><div class="wrap">
+    <span class="lead-line">{{ len .Site.Params.repos }} repositories — <b>no released code yet</b>: M0 and M1 in development</span>
+    <div class="mods">{{ range .Site.Params.repos }}<a href="{{ .href }}">{{ .name }}</a>{{ end }}</div>
+  </div></div>
+
+  <section id="scope"><div class="wrap">
+    <span class="eyebrow">What it will be</span>
+    <h2>Julia's semantics, written in Go.</h2>
+    <p class="lead">Julia's front end becomes Go, Base stays Julia, and the boundary between them is mapped onto libraries the fleet already has. This is the plan of the roadmap's <a href="https://github.com/go-scikit/roadmap/pull/12">bibliography</a>, not a result.</p>
+    <div class="grid">
+      {{ range .Site.Params.scope }}
+      <div class="card"><h3>{{ .name }}</h3><p>{{ .what | safeHTML }}</p></div>
+      {{ end }}
+    </div>
+  </div></section>
+
+  <section id="milestones" style="padding-top:10px"><div class="wrap">
+    <span class="eyebrow">The plan</span>
+    <h2>{{ len .Site.Params.milestones }} milestones, from an oracle to a playground.</h2>
+    <p class="lead">Effort is on the plan's scale: S is days, M weeks, L months, XL several months. M3 and M4 dominate. The differential oracles of the front end are built first, because they are stronger than Julia's test suite there.</p>
+    <div class="road">
+      {{ range .Site.Params.milestones }}
+      <div class="ph">
+        <div class="top"><h4>{{ .id }} · {{ .name }}</h4><span class="tag active">{{ .state }} · {{ .size }}</span></div>
+        <p>{{ .what | safeHTML }}</p>
+      </div>
+      {{ end }}
+    </div>
+  </div></section>
+
+  <section id="boundary" style="padding-top:10px"><div class="wrap">
+    <span class="eyebrow">The runtime boundary</span>
+    <h2>What the interpreter has to provide, counted.</h2>
+    <p class="lead">Every number below was counted by a Go program over the Julia sources the plan names, not estimated.</p>
+    <div class="grid">
+      {{ range .Site.Params.boundary }}
+      <div class="card"><h3>{{ .name }}</h3><p>{{ .what | safeHTML }}</p></div>
+      {{ end }}
+    </div>
+  </div></section>
+
+  <section id="scope-honest" style="padding-top:20px"><div class="wrap">
+    <div class="band">
+      <h2>An interpreter, and honest about it.</h2>
+      <p>It keeps Julia's semantics, not its native speed. An interpreter cannot match Julia's JIT on loops, so heavy computation goes through the Go libraries (go-ndarray, go-bignum, go-fft). The comparisons that can hold are start-up and first result, and the kernels routed to those libraries. The plan lists every interpreter speed statement as unverified: nothing has been run yet.</p>
+      <a class="btn btn-ghost" href="https://go-embedded-julia.github.io/docs/">{{ partial "icons/book.html" . }}The plan, the architecture and the licences →</a>
+    </div>
+  </div></section>
+
+  <section id="repos" style="padding-top:6px"><div class="wrap">
+    <span class="eyebrow">Repositories</span>
+    <h2>What is here.</h2>
+    <p class="lead">The organization holds its landing, its documentation and its brand. The code repository is created separately.</p>
+    <div class="road">
+      {{ range .Site.Params.repos }}
+      <div class="ph">
+        <div class="top"><h4><a href="{{ .href }}">{{ .name }}</a></h4><span class="tag active">{{ .kind }}</span></div>
+        <p>{{ .blurb | safeHTML }}</p>
+      </div>
+      {{ end }}
+    </div>
+  </div></section>
+
+  <footer><div class="wrap"><span>go-embedded-julia · <a href="https://github.com/go-embedded-julia">go-embedded-julia on GitHub</a>{{ if not (partial "mantra-on.html" .) }} · BSD-3-Clause · CGO_ENABLED=0{{ end }}</span><span>in development · M0, M1</span></div></footer>
+</body>
+</html>
