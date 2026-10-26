@@ -16,7 +16,7 @@ disableKinds = ['taxonomy', 'term', 'rss', 'sitemap', '404']
     path = "github.com/go-fleettools/landingkit"
 
 [params]
-  description = "go-embedded-julia (in development: milestones M0, the oracle harness, and M1, the parser): a Julia interpreter in pure Go that can be embedded, for the julia cells of go-notebook and its WebAssembly playground."
+  description = "go-embedded-julia (in development, v0.2.0: milestones M0, the oracle harness, and M1, the parser, are done): a Julia interpreter in pure Go that can be embedded, for the julia cells of go-notebook and its WebAssembly playground."
 
 # Every field below is rendered by layouts/index.html. A field nothing renders
 # does not stay true. Every statement is from the roadmap's bibliography,
@@ -25,7 +25,7 @@ disableKinds = ['taxonomy', 'term', 'rss', 'sitemap', '404']
   name  = "julia"
   kind  = "source"
   href  = "https://github.com/go-embedded-julia/julia"
-  blurb = "The interpreter. Its M0, the oracle harness against julia 1.12.6, is merged (pull request 1); M1, the parser, is in progress."
+  blurb = "The interpreter. Its M0, the oracle harness against julia 1.12.6, and M1, a Go port of JuliaSyntax identical to Meta.parseall on 1191/1191 files of julia's tree, are released as v0.2.0 (2026-10-26). M2, lowering, is planned."
 [[params.repos]]
   name  = "docs"
   kind  = "site"
@@ -69,8 +69,8 @@ disableKinds = ['taxonomy', 'term', 'rss', 'sitemap', '404']
   id    = "M1"
   name  = "Parser"
   size  = "L"
-  state = "in progress"
-  what  = "A Go port of <code>JuliaSyntax/src</code> (11 326 lines) producing a Go <code>Expr</code>, fuzzed with a depth and size bound. Exit test: <code>Expr</code>-identical on all 202 <code>base/</code> files, <code>stdlib/</code>, all 297 <code>test/</code> files and JuliaSyntax's own tests."
+  state = "done"
+  what  = "Done: released as v0.2.0 (2026-10-26), a Go port of JuliaSyntax 29ec5226f7b1 (the version julia 1.12.6 ships). <code>syntax.ParseAll</code> returns the same <code>Expr</code> as <code>Meta.parseall</code>: tokens, green trees and <code>Expr</code> identical on 1191 of 1191 files of julia 1.12.6's share/julia tree (base, Compiler, stdlib, test; 18.5 MB) and on 976 of 976 golden snippets. One core: 0.98 s against 1.39 s for julia (0.70x). Bounded (64 MiB, depth 4000) and fuzzed. Known gap: on a few malformed inputs JuliaSyntax itself throws and julia falls back to flisp, which is not ported."
 [[params.milestones]]
   id    = "M2"
   name  = "Lowering and macro expansion"
