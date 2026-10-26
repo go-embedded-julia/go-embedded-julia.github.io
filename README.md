@@ -10,7 +10,7 @@ interpreter will be, the milestones M0 to M7, the runtime boundary with its
 counts, and the honest scope: an interpreter, which keeps Julia's semantics and
 not its native speed. Its statements come from the roadmap's bibliography,
 `bib/julia.md` in [go-scikit/roadmap](https://github.com/go-scikit/roadmap)
-(pull request 12). There is no playground yet, so there is no playground button.
+(on main). There is no playground yet, so there is no playground button.
 
 The layout is the go-* family template: `layouts/index.html` and the shared
 design (stylesheet, theme toggle, fork ribbon, icons), imported as the Hugo module

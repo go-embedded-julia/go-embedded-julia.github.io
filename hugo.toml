@@ -20,7 +20,7 @@ disableKinds = ['taxonomy', 'term', 'rss', 'sitemap', '404']
 
 # Every field below is rendered by layouts/index.html. A field nothing renders
 # does not stay true. Every statement is from the roadmap's bibliography,
-# bib/julia.md (go-scikit/roadmap, pull request 12); none is a result.
+# bib/julia.md (go-scikit/roadmap, on main); none is a result.
 [[params.repos]]
   name  = "docs"
   kind  = "site"
