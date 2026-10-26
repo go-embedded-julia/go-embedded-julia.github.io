@@ -1,2 +1,31 @@
 # go-embedded-julia.github.io
-Landing page of go-embedded-julia
+
+The go-embedded-julia landing page (Hugo), served at <https://go-embedded-julia.github.io/>.
+The documentation is at <https://go-embedded-julia.github.io/docs/> (repository
+[go-embedded-julia/docs](https://github.com/go-embedded-julia/docs)).
+
+The organization is **in development**, at milestones M0 (the oracle harness) and
+M1 (the parser). Nothing is released, and the page says so. It gives what the
+interpreter will be, the milestones M0 to M7, the runtime boundary with its
+counts, and the honest scope: an interpreter, which keeps Julia's semantics and
+not its native speed. Its statements come from the roadmap's bibliography,
+`bib/julia.md` in [go-scikit/roadmap](https://github.com/go-scikit/roadmap)
+(pull request 12). There is no playground yet, so there is no playground button.
+
+The layout is the go-* family template: `layouts/index.html` and the shared
+design (stylesheet, theme toggle, fork ribbon, icons), imported as the Hugo module
+`github.com/go-fleettools/landingkit` pinned in `go.mod`. `[params.brand]`
+in `hugo.toml` is read from the logo's gradient:
+
+```sh
+go run github.com/go-fleettools/landingkit/cmd/landingkit brand static/img/logo.svg
+hugo server
+```
+
+| Workflow | What |
+| --- | --- |
+| `hugo.yml` | builds on pull requests; builds and deploys to Pages on `main` |
+| `ci.yml` | the site builds and names every repository; `go mod tidy` keeps the landingkit requirement |
+| `links.yml` | every link and image of the built site resolves |
+
+BSD-3-Clause.
