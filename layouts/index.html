@@ -19,7 +19,7 @@
   <div class="hero"><div class="wrap">
     <div>
       <h1 class="head">Julia, embedded in Go.<br><span class="accent">An interpreter that runs Julia's own Base.</span></h1>
-      <p class="sub">go-embedded-julia is <b>in development</b>, and its parser and its lowering are released: <b>v0.3.0</b> completes milestones <b>M0</b> (the oracle harness, against julia 1.12.6), <b>M1</b> (a Go port of JuliaSyntax), identical to julia's <code>Meta.parseall</code> on 1191 of 1191 files of julia's own tree, and <b>M2</b> (lowering: a port of julia 1.12.6's femtolisp front end), identical to <code>Meta.lower</code> on 53 997 of 53 997 forms of that tree. Milestone <b>M3</b> (the Core runtime) is in progress. It will be a pure-Go, embeddable Julia interpreter: julia's <b>parser</b> and <b>lowering</b> ported to Go, and an interpreter over the lowered IR that runs <b>Julia's Base unchanged</b>, for the <code>julia</code> cells of <a href="https://go-notebook.github.io/">go-notebook</a> and its WebAssembly playground.</p>
+      <p class="sub">go-embedded-julia is <b>in development</b>, and its parser and its lowering are released: <b>v0.3.0</b> completes milestones <b>M0</b> (the oracle harness, against julia 1.12.6), <b>M1</b> (a Go port of JuliaSyntax), identical to julia's <code>Meta.parseall</code> on 1191 of 1191 files of julia's own tree, and <b>M2</b> (lowering: a port of julia 1.12.6's femtolisp front end), identical to <code>Meta.lower</code> on 53 997 of 53 997 forms of that tree. Milestone <b>M3</b> (the Core runtime) is in progress: types, subtyping and specificity are done (<code>core</code>, v0.4.0); dispatch is next. It will be a pure-Go, embeddable Julia interpreter: julia's <b>parser</b> and <b>lowering</b> ported to Go, and an interpreter over the lowered IR that runs <b>Julia's Base unchanged</b>, for the <code>julia</code> cells of <a href="https://go-notebook.github.io/">go-notebook</a> and its WebAssembly playground.</p>
       <div class="cta">
         <a class="btn btn-primary" href="https://go-embedded-julia.github.io/docs/">{{ partial "icons/book.html" . }}Read the plan →</a>
         <a class="btn btn-ghost" href="https://github.com/go-scikit/roadmap/blob/main/bib/julia.md">{{ partial "icons/github.html" . }}The bibliography →</a>
@@ -32,7 +32,7 @@
 done      M0 oracle harness (julia 1.12.6)
 done      M1 parser: 1191/1191 files
 done      M2 lowering: 53997/53997 forms
-next      M3 Core runtime (in progress)
+next      M3 Core runtime (in progress: types, subtyping, specificity done; dispatch next)
 goal      julia cells in go-notebook
 scope     an interpreter, not a JIT
 plan      github.com/go-scikit/roadmap</pre>
