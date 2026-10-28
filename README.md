@@ -4,10 +4,11 @@ The go-embedded-julia landing page (Hugo), served at <https://go-embedded-julia.
 The documentation is at <https://go-embedded-julia.github.io/docs/> (repository
 [go-embedded-julia/docs](https://github.com/go-embedded-julia/docs)).
 
-The organization is **in development**. `go-embedded-julia/julia` v0.2.0
-(2026-10-26) completes milestones M0 (the oracle harness) and M1 (the parser,
-identical to `Meta.parseall` on 1191 of 1191 files of julia 1.12.6's tree);
-M2 (lowering) is planned, and the page says so. It gives what the
+The organization is **in development**. `go-embedded-julia/julia` v0.3.0
+(2026-10-28) completes milestones M0 (the oracle harness), M1 (the parser,
+identical to `Meta.parseall` on 1191 of 1191 files of julia 1.12.6's tree) and
+M2 (lowering, identical to `Meta.lower` on 53 997 of 53 997 forms of that tree);
+M3 (the Core runtime) is in progress, and the page says so. It gives what the
 interpreter will be, the milestones M0 to M7, the runtime boundary with its
 counts, and the honest scope: an interpreter, which keeps Julia's semantics and
 not its native speed. Its statements come from the roadmap's bibliography,
