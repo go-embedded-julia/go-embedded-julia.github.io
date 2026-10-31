@@ -19,16 +19,16 @@
   <div class="hero"><div class="wrap">
     <div>
       <h1 class="head">Julia, embedded in Go.<br><span class="accent">An interpreter that runs Julia's own Base.</span></h1>
-      <p class="sub">go-embedded-julia is <b>in development</b>, and its parser and its lowering are released: <b>v0.3.0</b> completes milestones <b>M0</b> (the oracle harness, against julia 1.12.6), <b>M1</b> (a Go port of JuliaSyntax), identical to julia's <code>Meta.parseall</code> on 1191 of 1191 files of julia's own tree, and <b>M2</b> (lowering: a port of julia 1.12.6's femtolisp front end), identical to <code>Meta.lower</code> on 53 997 of 53 997 forms of that tree. Milestone <b>M3</b> (the Core runtime) is in progress: <b>v0.7.0</b> extends the package <code>interp</code>, a port of julia 1.12.6's <code>src/interpreter.c</code> that runs lowered code over Core, to <code>struct</code> and <code>abstract type</code> definitions with julia's default constructors (65 Core-only programs show the same value as julia; Base is not there yet), on top of Julia's type objects, subtyping and method specificity, identical to julia on 20 000 random pairs, and the dispatch of concrete calls, identical to julia's <code>which</code> on 9 000 calls. It will be a pure-Go, embeddable Julia interpreter: julia's <b>parser</b> and <b>lowering</b> ported to Go, and an interpreter over the lowered IR that runs <b>Julia's Base unchanged</b>, for the <code>julia</code> cells of <a href="https://go-notebook.github.io/">go-notebook</a> and its WebAssembly playground.</p>
+      <p class="sub">go-embedded-julia is <b>in development</b>, and its parser and its lowering are released: <b>v0.3.0</b> completes milestones <b>M0</b> (the oracle harness, against julia 1.12.6), <b>M1</b> (a Go port of JuliaSyntax), identical to julia's <code>Meta.parseall</code> on 1191 of 1191 files of julia's own tree, and <b>M2</b> (lowering: a port of julia 1.12.6's femtolisp front end), identical to <code>Meta.lower</code> on 53 997 of 53 997 forms of that tree. Milestone <b>M3</b> (the Core runtime) is in progress: <b>v0.8.0</b> extends the package <code>interp</code>, a port of julia 1.12.6's <code>src/interpreter.c</code> that runs lowered code over Core, to <code>struct</code> and <code>abstract type</code> definitions with julia's default constructors and to methods with <code>where</code> clauses, dispatched with static parameters (76 Core-only programs show the same value as julia; Base is not there yet), on top of Julia's type objects, subtyping and method specificity, identical to julia on 20 000 random pairs, and the dispatch of concrete calls, identical to julia's <code>which</code> on 9 000 calls. It will be a pure-Go, embeddable Julia interpreter: julia's <b>parser</b> and <b>lowering</b> ported to Go, and an interpreter over the lowered IR that runs <b>Julia's Base unchanged</b>, for the <code>julia</code> cells of <a href="https://go-notebook.github.io/">go-notebook</a> and its WebAssembly playground.</p>
       <div class="cta">
         <a class="btn btn-primary" href="https://go-embedded-julia.github.io/docs/">{{ partial "icons/book.html" . }}Read the plan →</a>
         <a class="btn btn-ghost" href="https://github.com/go-scikit/roadmap/blob/main/bib/julia.md">{{ partial "icons/github.html" . }}The bibliography →</a>
       </div>
-      <div class="trust"><span><b>v0.7.0</b>: M0, M1, M2 done, M3 in progress</span><span><b>{{ len .Site.Params.milestones }}</b> milestones, M0 to M7</span><span><b>pure Go</b></span></div>
+      <div class="trust"><span><b>v0.8.0</b>: M0, M1, M2 done, M3 in progress</span><span><b>{{ len .Site.Params.milestones }}</b> milestones, M0 to M7</span><span><b>pure Go</b></span></div>
     </div>
     <div class="term">
       <div class="bar"><i style="background:#ff5f57"></i><i style="background:#febc2e"></i><i style="background:#28c840"></i><span class="t">status</span></div>
-<pre style="white-space:pre;overflow-x:auto;tab-size:4">release   v0.7.0 (2026-10-31)
+<pre style="white-space:pre;overflow-x:auto;tab-size:4">release   v0.8.0 (2026-10-31)
 done      M0 oracle harness (julia 1.12.6)
 done      M1 parser: 1191/1191 files
 done      M2 lowering: 53997/53997 forms
@@ -41,7 +41,7 @@ plan      github.com/go-scikit/roadmap</pre>
   </div></div>
 
   <div class="strip"><div class="wrap">
-    <span class="lead-line">{{ len .Site.Params.repos }} repositories — released <b>v0.7.0</b>: the parser and the lowering (M0, M1 and M2 done), the Core runtime (M3) in progress — types, subtyping, specificity, dispatch, an interpreter that runs struct definitions</span>
+    <span class="lead-line">{{ len .Site.Params.repos }} repositories — released <b>v0.8.0</b>: the parser and the lowering (M0, M1 and M2 done), the Core runtime (M3) in progress — types, subtyping, specificity, dispatch, an interpreter that runs struct definitions and where methods</span>
     <div class="mods">{{ range .Site.Params.repos }}<a href="{{ .href }}">{{ .name }}</a>{{ end }}</div>
   </div></div>
 
@@ -103,6 +103,6 @@ plan      github.com/go-scikit/roadmap</pre>
     </div>
   </div></section>
 
-  <footer><div class="wrap"><span>go-embedded-julia · <a href="https://github.com/go-embedded-julia">go-embedded-julia on GitHub</a>{{ if not (partial "mantra-on.html" .) }} · BSD-3-Clause · CGO_ENABLED=0{{ end }}</span><span>v0.7.0 · M0, M1, M2 done · M3 in progress</span></div></footer>
+  <footer><div class="wrap"><span>go-embedded-julia · <a href="https://github.com/go-embedded-julia">go-embedded-julia on GitHub</a>{{ if not (partial "mantra-on.html" .) }} · BSD-3-Clause · CGO_ENABLED=0{{ end }}</span><span>v0.8.0 · M0, M1, M2 done · M3 in progress</span></div></footer>
 </body>
 </html>
