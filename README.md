@@ -8,9 +8,9 @@ The organization is **in development**. `go-embedded-julia/julia` v0.3.0
 (2026-10-28) completes milestones M0 (the oracle harness), M1 (the parser,
 identical to `Meta.parseall` on 1191 of 1191 files of julia 1.12.6's tree) and
 M2 (lowering, identical to `Meta.lower` on 53 997 of 53 997 forms of that tree);
-M3 (the Core runtime) is in progress, and the page says so: v0.5.0 (2026-10-30)
-has Julia's type objects, subtyping, method specificity and the dispatch of
-concrete calls. It gives what the
+M3 (the Core runtime) is in progress, and the page says so: v0.6.0 (2026-10-31)
+adds the package `interp` (lowered code over Core) to Julia's type objects,
+subtyping, method specificity and the dispatch of concrete calls. It gives what the
 interpreter will be, the milestones M0 to M7, the runtime boundary with its
 counts, and the honest scope: an interpreter, which keeps Julia's semantics and
 not its native speed. Its statements come from the roadmap's bibliography,
