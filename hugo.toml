@@ -88,7 +88,7 @@ disableKinds = ['taxonomy', 'term', 'rss', 'sitemap', '404']
   name  = "Base bootstrap and image"
   size  = "XL"
   state = "planned"
-  what  = "<code>Base_compiler.jl</code> and <code>Base.jl</code> evaluated; the <code>jl_*</code>, libc and libuv shim (about 524 + 88 + 78 call sites); the Compiler interpreted for <code>_return_type</code>; an image writer and reader. Exit test: Base loads, and a list of <code>test/</code> files passes."
+  what  = "Its first half shipped with M3 in v0.13.0: <code>Base_compiler.jl</code>, <code>Base.jl</code> and the stdlibs evaluate, and the <code>jl_*</code>, libc and libuv calls Base reaches are ported. Left: an image writer and reader, so that a VM loads Base in seconds rather than building it for 13 minutes at each boot (go-embedded-julia/julia#40), and the exit test, a list of julia's <code>test/</code> files passing."
 [[params.milestones]]
   id    = "M5"
   name  = "Numeric boundary"
