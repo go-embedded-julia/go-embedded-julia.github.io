@@ -150,3 +150,17 @@ disableKinds = ['taxonomy', 'term', 'rss', 'sitemap', '404']
   chipFgDark = "#c5b8f7"
   statsEnd = "#e6e0fc"
   bandText = "#eeeafd"
+
+# The hero's buttons, rendered by landingkit's cta.html in the kit's order.
+[[params.cta]]
+  kind  = "docs"
+  href  = "https://go-embedded-julia.github.io/docs/"
+  label = "Read the plan →"
+[[params.cta]]
+  kind  = "github"
+  href  = "https://github.com/go-scikit/roadmap/blob/main/bib/julia.md"
+  label = "The bibliography →"
+
+# The architectures the tests RUN on, read from the library's CI.
+[params.mantra]
+  goarch = ["amd64", "arm64", "riscv64", "loong64", "ppc64le", "s390x", "arm"]
