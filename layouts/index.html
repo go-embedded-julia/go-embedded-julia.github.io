@@ -19,20 +19,20 @@
   <div class="hero"><div class="wrap">
     <div>
       <h1 class="head">Julia, embedded in Go.<br><span class="accent">An interpreter that runs Julia's own Base.</span></h1>
-      <p class="sub">go-embedded-julia is <b>in development</b>, and its first four milestones are released. <b>v0.13.0</b> completes <b>M3</b>: the interpreter runs julia 1.12.6's real <b>Base</b> and seven of its standard libraries (FileWatching, Libdl, Artifacts, SHA, Sockets, LinearAlgebra and Random), built and initialized, with tasks and an event loop, and a virtual file system in two modes, a read-only sandbox and the host's. It follows <b>M0</b> (the oracle harness, against julia 1.12.6), <b>M1</b> (a Go port of JuliaSyntax), identical to julia's <code>Meta.parseall</code> on 1191 of 1191 files of julia's own tree, and <b>M2</b> (lowering: a port of julia 1.12.6's femtolisp front end), identical to <code>Meta.lower</code> on 53 997 of 53 997 forms of that tree. Since then <b>v0.14.0</b> ships the prebuilt system image (a VM loads it, pinned by its SHA-256, in about 0.65 s instead of building Base for 13 minutes) and <b>v0.15.0</b> a <code>Kernel</code>, a per-cell <code>Eval</code> with budgets and cancellation, in a sandbox by default. The current release is <b>v0.17.0</b>: the kernel runs cells with the REPL's soft scope, prints julia's own text for a <code>MethodError</code>, and reads and sets globals as Go values (<code>Get</code> and <code>Set</code>). Known limits: dynamic libraries are the ones implemented in Go (loading a C library is a stated divergence), the image is not authenticated by itself (#49), <code>uppercase</code> and the other <code>utf8proc</code> functions are not ported (#65), the standard libraries are still julia's <code>.jl</code> sources (rewriting them in Go is issue #36), no BLAS kernel computes yet (#33), writing a file in host mode is not ported yet (#32), and <code>[@async i^2 for i in 1:4]</code> is correct but takes minutes. It will be a {{ if partial "mantra-on.html" . }}Go{{ else }}pure-Go{{ end }}, embeddable Julia interpreter: julia's <b>parser</b> and <b>lowering</b> ported to Go, and an interpreter over the lowered IR that runs <b>Julia's Base unchanged</b>, for the <code>julia</code> cells of <a href="https://go-notebook.github.io/">go-notebook</a> and its WebAssembly playground.</p>
+      <p class="sub">go-embedded-julia is <b>in development</b>, and its first four milestones are released. <b>v0.13.0</b> completes <b>M3</b>: the interpreter runs julia 1.12.6's real <b>Base</b> and seven of its standard libraries (FileWatching, Libdl, Artifacts, SHA, Sockets, LinearAlgebra and Random), built and initialized, with tasks and an event loop, and a virtual file system in two modes, a read-only sandbox and the host's. It follows <b>M0</b> (the oracle harness, against julia 1.12.6), <b>M1</b> (a Go port of JuliaSyntax), identical to julia's <code>Meta.parseall</code> on 1191 of 1191 files of julia's own tree, and <b>M2</b> (lowering: a port of julia 1.12.6's femtolisp front end), identical to <code>Meta.lower</code> on 53 997 of 53 997 forms of that tree. Since then <b>v0.14.0</b> ships the prebuilt system image (a VM loads it, pinned by its SHA-256, in about 0.65 s instead of building Base for 13 minutes) and <b>v0.15.0</b> a <code>Kernel</code>, a per-cell <code>Eval</code> with budgets and cancellation, in a sandbox by default. The current release is <b>v0.19.0</b>: the kernel runs cells with the REPL's soft scope, prints julia's own text for a <code>MethodError</code>, reads and sets globals as Go values (<code>Get</code>, <code>Set</code>, <code>Has</code>, <code>TypeOf</code>), and <code>Reset</code>s to its starting state in 0.6 ms after an 18-cell corpus, where loading the image again takes about 0.85 s. <code>A * x</code>, <code>A * B</code> and <code>x' * y</code> run through <b>go-blas</b>, <code>uppercase</code> and <code>normalize</code> through a Go port of utf8proc, and the interpreter is faster: measured by the maintainers and indicative only, a plain loop takes 9 to 10 times as long as in julia's own interpreter (15 times before), and building Base takes 212 s (about 340 s before). Known limits: dynamic libraries are the ones implemented in Go (loading a C library is a stated divergence), the image is not authenticated by itself (#49), the standard libraries are still julia's <code>.jl</code> sources (rewriting them in Go is issue #36), LAPACK and the level-3 BLAS routines other than <code>gemm</code> are not there yet (#67) and each BLAS call copies a boxed array (#81), writing a file in host mode is not ported yet (#32), and <code>[@async i^2 for i in 1:4]</code> is correct but takes minutes. It will be a {{ if partial "mantra-on.html" . }}Go{{ else }}pure-Go{{ end }}, embeddable Julia interpreter: julia's <b>parser</b> and <b>lowering</b> ported to Go, and an interpreter over the lowered IR that runs <b>Julia's Base unchanged</b>, for the <code>julia</code> cells of <a href="https://go-notebook.github.io/">go-notebook</a> and its WebAssembly playground.</p>
       {{/* [[params.cta]] in hugo.toml: the kit renders the row */}}
       {{ partial "cta.html" . }}
-      <div class="trust"><span><b>v0.17.0</b>: M0 to M3 done, M4 and M6 partial</span><span><b>{{ len .Site.Params.milestones }}</b> milestones, M0 to M7</span><span><b>pure Go</b></span></div>
+      <div class="trust"><span><b>v0.19.0</b>: M0 to M3 done, M4, M5 and M6 partial</span><span><b>{{ len .Site.Params.milestones }}</b> milestones, M0 to M7</span><span><b>pure Go</b></span></div>
     </div>
     <div class="term">
       <div class="bar"><i style="background:#ff5f57"></i><i style="background:#febc2e"></i><i style="background:#28c840"></i><span class="t">status</span></div>
-<pre style="white-space:pre;overflow-x:auto;tab-size:4">release   v0.13.0 (2026-11-14)
+<pre style="white-space:pre;overflow-x:auto;tab-size:4">release   v0.19.0
 done      M0 oracle harness (julia 1.12.6)
 done      M1 parser: 1191/1191 files
 done      M2 lowering: 53997/53997 forms
 done      M3 julia's Base runs, 7 stdlibs
-next      M4 image, numeric boundary
-limits    stdlibs still .jl, no BLAS yet
+partial   M4 image, M5 BLAS and utf8proc, M6 Kernel
+limits    stdlibs still .jl, no LAPACK yet
 goal      julia cells in go-notebook
 scope     an interpreter, not a JIT
 plan      github.com/go-scikit/roadmap</pre>
@@ -40,7 +40,7 @@ plan      github.com/go-scikit/roadmap</pre>
   </div></div>
 
   <div class="strip"><div class="wrap">
-    <span class="lead-line">{{ len .Site.Params.repos }} repositories — released <b>v0.13.0</b>: the parser, the lowering and the runtime (M0 to M3 done) — julia 1.12.6's real Base and seven stdlibs build and initialize, with tasks, an event loop and a two-mode virtual file system</span>
+    <span class="lead-line">{{ len .Site.Params.repos }} repositories — released <b>v0.19.0</b>: the parser, the lowering and the runtime (M0 to M3 done) — julia 1.12.6's real Base and seven stdlibs run from a pinned prebuilt image, in a kernel that resets to its starting state without reloading</span>
     <div class="mods">{{ range .Site.Params.repos }}<a href="{{ .href }}">{{ .name }}</a>{{ end }}</div>
   </div></div>
 
@@ -83,7 +83,7 @@ plan      github.com/go-scikit/roadmap</pre>
   <section id="scope-honest" style="padding-top:20px"><div class="wrap">
     <div class="band">
       <h2>An interpreter, and honest about it.</h2>
-      <p>It keeps Julia's semantics, not its native speed. An interpreter cannot match Julia's JIT on loops, so heavy computation goes through the Go libraries (go-ndarray, go-bignum, go-fft). The comparisons that can hold are start-up and first result, and the kernels routed to those libraries. The plan lists every interpreter speed statement as unverified, except the parser's: on one core, parsing julia 1.12.6's share/julia tree takes 0.98 s against 1.39 s for <code>Meta.parseall</code> (0.70x). No speed is claimed for the lowering.</p>
+      <p>It keeps Julia's semantics, not its native speed. An interpreter cannot match Julia's JIT on loops, so heavy computation goes through the Go libraries (go-ndarray, go-bignum, go-fft). The comparisons that can hold are start-up and first result, and the kernels routed to those libraries. The parser's figure is stated without a caveat: on one core, parsing julia 1.12.6's share/julia tree takes 0.98 s against 1.39 s for <code>Meta.parseall</code> (0.70x). The interpreter's, measured by the maintainers and indicative only: a plain loop takes 9 to 10 times as long as in julia's own interpreter, down from 15 times, and building Base takes 212 s, down from about 340 s. No speed is claimed for the lowering.</p>
       <a class="btn btn-ghost" href="https://go-embedded-julia.github.io/docs/">{{ partial "icons/book.html" . }}The plan, the architecture and the licences →</a>
     </div>
   </div></section>
@@ -102,6 +102,6 @@ plan      github.com/go-scikit/roadmap</pre>
     </div>
   </div></section>
 
-  <footer><div class="wrap"><span>go-embedded-julia · <a href="https://github.com/go-embedded-julia">go-embedded-julia on GitHub</a>{{ if not (partial "mantra-on.html" .) }} · {{ if not (partial "mantra-on.html" $) }}BSD-3-Clause · {{ end }}CGO_ENABLED=0{{ end }}</span><span>v0.13.0 · M0, M1, M2, M3 done</span></div></footer>
+  <footer><div class="wrap"><span>go-embedded-julia · <a href="https://github.com/go-embedded-julia">go-embedded-julia on GitHub</a>{{ if not (partial "mantra-on.html" .) }} · {{ if not (partial "mantra-on.html" $) }}BSD-3-Clause · {{ end }}CGO_ENABLED=0{{ end }}</span><span>v0.19.0 · M0, M1, M2, M3 done</span></div></footer>
 </body>
 </html>
