@@ -13,10 +13,13 @@ and M3 (the runtime): the interpreter runs julia
 Sockets, LinearAlgebra, Random), with tasks, an event loop and a virtual file
 system in two modes (sandbox and host). The page gives its known limits:
 dynamic libraries are the Go-implemented ones (loading a C library is a stated
-divergence), the stdlibs are still julia's `.jl` sources (#36), no LAPACK or
-level-3 BLAS beyond `gemm` yet (#67), no host-mode file writes yet (#32), and a
-slow `@async` comprehension. The current release is v0.19.0: the page names it
-(`Kernel.Reset`, `A * x` through go-blas, utf8proc in Go) and the interpreter's
+divergence), the stdlibs are still julia's `.jl` sources (#36), no LAPACK yet
+(#67, which also leaves `UpperTriangular(A) \ B` refused), no host-mode file
+writes yet (#32), and a slow `@async` comprehension. The current release is
+v0.22.0: the page names it (`Kernel.Reset` that stops the tasks and timers cells
+started, a typed `Float64` store with BLAS in place at 1.02 to 1.16 times
+go-blas called directly, level-3 BLAS `trsm`, `trmm`, `syrk` and `symm`, a load
+that leaves the boot types alone, a concurrent `New`) and the interpreter's
 measured speedup (a plain loop 9 to 10 times julia's own interpreter, down from
 15; Base built in 212 s, down from about 340 s), which are the maintainers'
 indicative figures. It gives what the
