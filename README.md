@@ -13,11 +13,13 @@ and M3 (the runtime): the interpreter runs julia
 Sockets, LinearAlgebra, Random), with tasks, an event loop and a virtual file
 system in two modes (sandbox and host). The page gives its known limits:
 dynamic libraries are the Go-implemented ones (loading a C library is a stated
-divergence), the stdlibs are still julia's `.jl` sources (#36), no LAPACK yet
-(#67, which also leaves `UpperTriangular(A) \ B` refused), `rand(m, n)`
-reaching an unported `llvmcall` (#120), no host-mode file
+divergence), the stdlibs are still julia's `.jl` sources (#36), LAPACK only for
+LU and Cholesky (#67 keeps `inv`, `qr`, `eigen`, `svd` and `UpperTriangular(A) \ B`
+refused), `rand(m, n)` still reaching an unported `llvmcall` (#120, partly
+addressed by #125), no host-mode file
 writes yet (#32), and a slow `@async` comprehension. The current release is
-v0.24.0: the page names it (an empty `catch_backtrace()` instead of "not
+v0.25.0: the page names it (`lu`, `A \ b`, `factorize`, `cholesky` through
+go-blas v0.4.0, an empty `catch_backtrace()` instead of "not
 ported", a Base image that carries the inference of a `Float64` matrix display,
 `Kernel.Reset` that stops the tasks and timers cells started, a typed `Float64` store with BLAS in place at 1.02 to 1.16 times
 go-blas called directly, level-3 BLAS `trsm`, `trmm`, `syrk` and `symm`, a load
