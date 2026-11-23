@@ -18,7 +18,7 @@ LU and Cholesky (#67 keeps `inv`, `qr`, `eigen`, `svd` and `UpperTriangular(A) \
 refused), `rand(m, n)` still reaching an unported `llvmcall` (#120, partly
 addressed by #125), no host-mode file
 writes yet (#32), and a slow `@async` comprehension. The current release is
-v0.25.0: the page names it (`lu`, `A \ b`, `factorize`, `cholesky` through
+v0.26.0: the page names it (the bodies of `@generated` functions run, so SHA-1, SHA-256 and SHA-512 give the published digests, `lu`, `A \ b`, `factorize`, `cholesky` through
 go-blas v0.4.0, an empty `catch_backtrace()` instead of "not
 ported", a Base image that carries the inference of a `Float64` matrix display,
 `Kernel.Reset` that stops the tasks and timers cells started, a typed `Float64` store with BLAS in place at 1.02 to 1.16 times
